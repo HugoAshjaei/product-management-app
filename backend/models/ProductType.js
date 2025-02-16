@@ -5,6 +5,8 @@ const ProductTypeSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    maxlength: 64,
+    minlength: 1,
   },
 });
 

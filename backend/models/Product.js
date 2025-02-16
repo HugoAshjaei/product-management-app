@@ -2,14 +2,20 @@ const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema(
   {
-    name: {
+    id: {
       type: String,
       required: true,
       unique: true,
     },
-    description: {
+    name: {
       type: String,
       required: true,
+      maxlength: 64,
+      minlength: 1,
+    },
+    description: {
+      type: String,
+      default: "",
     },
     images: [
       {
@@ -23,11 +29,14 @@ const ProductSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: true,
+      default: 0,
     },
-    colour: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Colour",
-    },
+    colours: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Colour",
+      },
+    ],
     productType: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "ProductType",
@@ -38,6 +47,7 @@ const ProductSchema = new mongoose.Schema(
   }
 );
 
+ProductSchema.index({ id: 1 }, { unique: true });
 ProductSchema.index({ name: 1 });
 ProductSchema.index({ colour: 1 });
 ProductSchema.index({ productType: 1 });
