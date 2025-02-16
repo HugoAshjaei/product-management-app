@@ -5,6 +5,7 @@ const cors = require("cors");
 const ENV = require("./config/env.js");
 const connectDB = require("./config/db.js");
 const routes = require("./routes/index.js");
+const errorHandler = require("./middlewares/errorHandler.js");
 
 // set environment variables
 process.env.MAIN_PATH = ENV.MAIN_PATH;
@@ -31,6 +32,9 @@ app.use("/ping", (req, res) => {
 });
 
 app.use("/api", routes);
+
+// error handler middleware
+app.use(errorHandler);
 
 app.listen(app.get("port"), () => {
   console.log(`Server running on port ${app.get("port")}`);
