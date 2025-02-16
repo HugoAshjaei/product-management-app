@@ -9,9 +9,5 @@ const Product = require("../../models/Product.js");
  * @returns {Promise<Product>} The product object.
  */
 module.exports = async (id) => {
-  return Product.findOne({ id })
-    .select({ __v: 0 })
-    .skip((pageNumber - 1) * pageSize)
-    .limit(pageSize)
-    .lean();
+  return Product.findOne({ id }).select({ __v: 0 }).lean();
 };
