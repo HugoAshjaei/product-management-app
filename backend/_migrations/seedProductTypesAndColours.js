@@ -1,8 +1,8 @@
 const connectDB = require("../config/db.js");
 const fs = require("fs");
 const path = require("path");
-const ProductTypeRepository = require("../repositories/productTypes/index.js");
-const ColourRepository = require("../repositories/colours/index.js");
+const ProductTypeRepository = require("../repositories/productTypes/productTypesRepository.js");
+const ColourRepository = require("../repositories/colours/coloursRepository.js");
 
 // Connect to the database
 connectDB();
