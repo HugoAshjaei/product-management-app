@@ -15,7 +15,7 @@ const Product = require("../../models/Product.js");
  * @param {Array<string>} [product.images=[]] - The images of the product.
  * @returns {Promise<Object>} The updated product object.
  */
-module.exports = async (
+const updateProduct = async (
   id,
   { name, description, price, colours, productType, images = [] }
 ) => {
@@ -32,4 +32,8 @@ module.exports = async (
       },
     }
   );
+};
+
+module.exports = {
+  updateProduct,
 };

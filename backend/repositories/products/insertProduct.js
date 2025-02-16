@@ -15,7 +15,7 @@ const Product = require("../../models/Product.js");
  * @param {Array<string>} [product.images=[]] - The images of the product.
  * @returns {Promise<Object>} The inserted product object.
  */
-module.exports = async ({
+const insertProduct = async ({
   id,
   name,
   description,
@@ -33,4 +33,8 @@ module.exports = async ({
     productType,
     images,
   });
+};
+
+module.exports = {
+  insertProduct,
 };

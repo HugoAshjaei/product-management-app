@@ -1,5 +1,4 @@
 const { errorTypes, errorMessages } = require("../constants/errors.js");
-const details = require("../validators/products/fields/details.js");
 
 const validator = (schema) => {
   return (req, res, next) => {

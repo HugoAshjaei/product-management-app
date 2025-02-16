@@ -7,6 +7,10 @@ const ProductType = require("../../models/ProductType.js");
  * @function getProductTypes
  * @returns {Promise<Array<{ _id: string, name: string }>>} An array of product type objects.
  */
-module.exports = async () => {
+const getProductTypes = async () => {
   return ProductType.find().select({ _id: 1, name: 1 }).lean();
+};
+
+module.exports = {
+  getProductTypes,
 };

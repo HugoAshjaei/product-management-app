@@ -31,7 +31,7 @@ const generateQuery = (name, colourId, productTypeId) => {
  * Retrieves products from the database based on the provided filters and pagination options.
  *
  * @async
- * @function getProducts
+ * @function listProducts
  * @param {string} [name] - The name of the product to search for.
  * @param {string} [colourId] - The ID of the colour to filter by.
  * @param {string} [productTypeId] - The ID of the product type to filter by.
@@ -39,7 +39,7 @@ const generateQuery = (name, colourId, productTypeId) => {
  * @param {number} [pageSize=10] - The number of products per page.
  * @returns {Promise<Array<Product>>} An array of product objects.
  */
-module.exports = async (
+const listProducts = async (
   name,
   colourId,
   productTypeId,
@@ -52,4 +52,15 @@ module.exports = async (
     .skip((pageNumber - 1) * pageSize)
     .limit(pageSize)
     .lean();
+};
+
+const countProducts = async (name, colourId, productTypeId) => {
+  const query = generateQuery(name, colourId, productTypeId);
+  return Product.countDocuments(query);
+};
+
+module.exports = {
+  listProducts,
+  generateQuery,
+  countProducts,
 };

@@ -15,12 +15,8 @@ module.exports = async (req, res, next) => {
 
     // delete product
     await ProductsRepository.deleteProduct(id);
-    // return products list
-    const products = await ProductsRepository.getProducts();
 
-    return res.json({
-      products,
-    });
+    return res.json({});
   } catch (error) {
     next(error);
   }

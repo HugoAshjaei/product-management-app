@@ -8,8 +8,12 @@ const Product = require("../../models/Product.js");
  * @param {string} id - The ID of the product to update.
  * @returns {Promise<Object>} The deleted product object.
  */
-module.exports = async (id) => {
+const deleteProduct = async (id) => {
   return Product.deleteOne({
     id: id,
   });
+};
+
+module.exports = {
+  deleteProduct,
 };

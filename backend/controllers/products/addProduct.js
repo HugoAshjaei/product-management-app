@@ -26,11 +26,10 @@ module.exports = async (req, res, next) => {
       images,
     });
 
-    // return products list
-    const products = await ProductsRepository.getProducts();
+    const newProduct = await ProductsRepository.getProductById(id);
 
     return res.status(201).json({
-      products,
+      product: newProduct,
     });
   } catch (error) {
     next(error);

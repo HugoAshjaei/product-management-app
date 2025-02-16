@@ -1,5 +1,5 @@
-const getColours = require("./getColours.js");
-const insertColours = require("./insertColours.js");
+const { getColours } = require("./getColours.js");
+const { insertColours } = require("./insertColours.js");
 
 module.exports = {
   getColours,

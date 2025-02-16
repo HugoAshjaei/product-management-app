@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
     });
 
     // return products list
-    const products = await ProductsRepository.getProducts();
+    const products = await ProductsRepository.listProducts();
 
     return res.json({
       products,

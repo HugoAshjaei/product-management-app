@@ -7,6 +7,10 @@ const Colour = require("../../models/Colour.js");
  * @function getColours
  * @returns {Promise<Array<{ _id: string, name: string, hex: string }>>} An array of colour objects.
  */
-module.exports = async () => {
+const getColours = async () => {
   return Colour.find().select({ _id: 1, name: 1, hex: 1 }).lean();
+};
+
+module.exports = {
+  getColours,
 };

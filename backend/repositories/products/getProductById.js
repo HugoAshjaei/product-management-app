@@ -8,6 +8,8 @@ const Product = require("../../models/Product.js");
  * @param {string} id - The ID of the product to retrieve.
  * @returns {Promise<Product>} The product object.
  */
-module.exports = async (id) => {
+const getProductById = async (id) => {
   return Product.findOne({ id }).select({ __v: 0 }).lean();
 };
+
+module.exports = { getProductById };
