@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Product management rest API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HugoAshjaei/product-management-app.git"
+  },
+  "author": "Hugo Ashjaei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HugoAshjaei/product-management-app/issues"
+  },
+  "homepage": "https://github.com/HugoAshjaei/product-management-app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.10.1"
+  }
+}
