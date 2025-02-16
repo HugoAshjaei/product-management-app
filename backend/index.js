@@ -3,10 +3,14 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const ENV = require("./config/env.js");
+const connectDB = require("./config/db.js");
 
 // set environment variables
 process.env.MAIN_PATH = ENV.MAIN_PATH;
 process.env.UV_THREADPOOL_SIZE = ENV.UV_THREADPOOL_SIZE;
+
+// connect to database
+connectDB();
 
 // http web server main instance
 const app = express();
