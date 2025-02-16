@@ -17,11 +17,11 @@ const generateQuery = (name, colourId, productTypeId) => {
   }
 
   if (colourId) {
-    query.colourId = colourId;
+    query.colours = colourId;
   }
 
   if (productTypeId) {
-    query.productTypeId = productTypeId;
+    query.productType = productTypeId;
   }
 
   return query;

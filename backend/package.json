@@ -4,10 +4,18 @@
   "description": "Product management rest API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node index.js",
     "seedData": "node _migrations/seedProductTypesAndColours.js",
     "build": "npm i && npm run seedData && npm start"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setup.js"
+    ],
+    "testMatch": [
+      "**/tests/**/*_tests.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -25,5 +33,9 @@
     "express": "^4.21.2",
     "helmet": "^8.0.0",
     "mongoose": "^8.10.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.1.3"
   }
 }
