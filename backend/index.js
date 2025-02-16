@@ -6,6 +6,8 @@ const ENV = require("./config/env.js");
 const connectDB = require("./config/db.js");
 const routes = require("./routes/index.js");
 const errorHandler = require("./middlewares/errorHandler.js");
+const rateLimiter = require("./middlewares/rateLimiter.js");
+const requestIp = require("request-ip");
 
 // set environment variables
 process.env.MAIN_PATH = ENV.MAIN_PATH;
@@ -22,6 +24,10 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// rate limiter middleware
+app.use(requestIp.mw());
+app.use(rateLimiter);
 
 // set the port in main of application
 app.set("port", ENV.PORT);
