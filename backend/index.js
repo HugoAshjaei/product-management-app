@@ -8,6 +8,8 @@ const routes = require("./routes/index.js");
 const errorHandler = require("./middlewares/errorHandler.js");
 const rateLimiter = require("./middlewares/rateLimiter.js");
 const requestIp = require("request-ip");
+const requestsLogger = require("./middlewares/requestsLogger.js");
+const logger = require("./utils/logger.js");
 
 // set environment variables
 process.env.MAIN_PATH = ENV.MAIN_PATH;
@@ -32,16 +34,15 @@ app.use(rateLimiter);
 // set the port in main of application
 app.set("port", ENV.PORT);
 
-// routes
-app.use("/ping", (req, res) => {
-  res.send("pong");
-});
+// routes logger
+app.use(requestsLogger);
 
+// routes
 app.use("/api", routes);
 
 // error handler middleware
 app.use(errorHandler);
 
 app.listen(app.get("port"), () => {
-  console.log(`Server running on port ${app.get("port")}`);
+  logger.info(`Server running on port ${app.get("port")}`);
 });
