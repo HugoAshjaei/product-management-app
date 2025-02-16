@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const ENV = require("./config/env.js");
 const connectDB = require("./config/db.js");
+const routes = require("./routes/index.js");
 
 // set environment variables
 process.env.MAIN_PATH = ENV.MAIN_PATH;
@@ -28,6 +29,8 @@ app.set("port", ENV.PORT);
 app.use("/ping", (req, res) => {
   res.send("pong");
 });
+
+app.use("/api", routes);
 
 app.listen(app.get("port"), () => {
   console.log(`Server running on port ${app.get("port")}`);
