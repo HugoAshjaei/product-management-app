@@ -1,8 +1,8 @@
 const connectDB = require("../config/db.js");
-const ProductType = require("../models/ProductType.js");
-const Colour = require("../models/Colour.js");
 const fs = require("fs");
 const path = require("path");
+const ProductTypeRepository = require("../repositories/productTypes/index.js");
+const ColourRepository = require("../repositories/colours/index.js");
 
 // connect to database
 connectDB();
@@ -20,10 +20,10 @@ const productTypes = fs.readFileSync(
 
 const checkIfDataExists = async () => {
   try {
-    const productTypesCount = await ProductType.countDocuments();
-    const coloursCount = await Colour.countDocuments();
+    const productTypes = await ProductTypeRepository.getProductTypes();
+    const colours = await ColourRepository.getColours();
 
-    if (productTypesCount === 0 && coloursCount === 0) {
+    if (productTypes.length === 0 && colours.length === 0) {
       await seedProductTypesAndColours();
     } else {
       console.log("Data already exists");
@@ -51,8 +51,8 @@ const seedProductTypesAndColours = async () => {
       name: productType,
     }));
 
-    await Colour.insertMany(coloursArray);
-    await ProductType.insertMany(productTypesArray);
+    await ColourRepository.insertColours(coloursArray);
+    await ProductTypeRepository.insertProductTypes(productTypesArray);
 
     console.log("Data seeded successfully");
   } catch (error) {
