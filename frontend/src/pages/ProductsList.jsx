@@ -1,38 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "../componenets/ProductCard";
+import api from "../api/axiosInstance";
+import _ from "lodash";
 
 const Home = () => {
-  const [products, setProducts] = useState([
-    {
-      _id: "67b1e01489b3364a66a79e5b",
-      id: "1",
-      name: "Product Name 1",
-      description: "Product Description",
-      images: [
-        "https://www.ikea.com/se/en/images/products/soederhamn-3-seat-section-tonerud-red__1213838_pe911343_s5.jpg?f=xl",
-      ],
-      price: 100,
-      colours: ["67b1ba2e5ac50e121fdd8baa"],
-      productType: "67b1ba2e5ac50e121fdd8bdf",
-      createdAt: "2025-02-16T12:54:44.384Z",
-      updatedAt: "2025-02-16T13:53:23.127Z",
-    },
-    {
-      _id: "67b1e01489b3364a66a79e5b",
-      id: "2",
-      name: "Product Name 2",
-      description:
-        "Product Description jsjd jans djkasnd kaj owqj djasd adh ajsd",
-      images: [
-        "https://www.ikea.com/se/en/images/products/soederhamn-3-seat-section-tonerud-red__1213838_pe911343_s5.jpg?f=xl",
-      ],
-      price: 100,
-      colours: ["67b1ba2e5ac50e121fdd8baa"],
-      productType: "67b1ba2e5ac50e121fdd8bdf",
-      createdAt: "2025-02-16T12:54:44.384Z",
-      updatedAt: "2025-02-16T13:53:23.127Z",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
+  const [pagination, setPagination] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await api.get("/products/list");
+        setProducts((prevProducts) =>
+          _.uniqBy([...prevProducts, ...response.data.products], "id")
+        );
+        setPagination(response.data.pagination);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div>
