@@ -4,8 +4,6 @@ const {
 } = require("../../../repositories/colours/coloursRepository.js");
 
 describe("coloursRepository", () => {
-  // insertColour first
-
   test("insertColours should insert a colour", async () => {
     const colour = { name: "testColour", hex: "#000000" };
     const result = await insertColours(colour);
