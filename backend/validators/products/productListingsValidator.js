@@ -2,7 +2,7 @@ const Joi = require("joi");
 
 const validator = Joi.object({
   query: Joi.object({
-    page: Joi.number().default(1),
+    page: Joi.number().default(1).min(1),
     limit: Joi.number().default(10),
     name: Joi.string().allow(""),
     colourId: Joi.string().optional(),

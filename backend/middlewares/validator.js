@@ -8,7 +8,6 @@ const validator = (schema) => {
       params: req.params,
       query: req.query,
     });
-    console.log(error);
     if (error) {
       return res.status(400).json({
         type: errorTypes.VALIDATION_ERROR,
