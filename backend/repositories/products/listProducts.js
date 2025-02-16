@@ -49,6 +49,7 @@ const listProducts = async (
   const query = generateQuery(name, colourId, productTypeId);
   return Product.find(query)
     .select({ __v: 0 })
+    .sort({ createdAt: -1 })
     .skip((pageNumber - 1) * pageSize)
     .limit(pageSize)
     .lean();
