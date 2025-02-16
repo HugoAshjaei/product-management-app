@@ -1,4 +1,5 @@
 const ProductsRepository = require("../../repositories/products/productsRepository.js");
+const { errorTypes, errorMessages } = require("../../constants/errors.js");
 
 module.exports = async (req, res, next) => {
   try {
@@ -9,7 +10,8 @@ module.exports = async (req, res, next) => {
     const product = await ProductsRepository.getProductById(id);
     if (product) {
       return res.status(400).json({
-        message: "Product already exists",
+        type: errorTypes.PRODUCT__ALREADY_EXISTS,
+        message: errorMessages[errorTypes.PRODUCT__ALREADY_EXISTS],
       });
     }
 

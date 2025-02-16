@@ -1,8 +1,10 @@
+const { errorTypes, errorMessages } = require("../constants/errors.js");
+
 const errorHandler = (err, req, res, next) => {
-  console.log("here");
   console.error(err.stack);
   res.status(500).json({
-    message: "Something went wrong, please try again later",
+    type: errorTypes.INTERNAL_SERVER_ERROR,
+    message: errorMessages[errorTypes.INTERNAL_SERVER_ERROR],
   });
 };
 
