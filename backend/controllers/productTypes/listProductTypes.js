@@ -2,5 +2,7 @@ const ProductTypesRepository = require("../../repositories/productTypes/productT
 
 module.exports = async (req, res) => {
   const productTypes = await ProductTypesRepository.getProductTypes();
-  return res.json(productTypes);
+  return res.json({
+    productTypes,
+  });
 };
