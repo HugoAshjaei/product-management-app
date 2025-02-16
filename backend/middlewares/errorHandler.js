@@ -1,6 +1,6 @@
 const { errorTypes, errorMessages } = require("../constants/errors.js");
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res) => {
   console.error(err.stack);
   res.status(500).json({
     type: errorTypes.INTERNAL_SERVER_ERROR,
