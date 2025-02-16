@@ -2,20 +2,18 @@ const ProductsRepository = require("../../repositories/products/productsReposito
 
 module.exports = async (req, res, next) => {
   try {
-    const { id, name, description, price, colours, productType, images } =
-      req.body;
+    const { id } = req.params;
+    const { name, description, price, colours, productType, images } = req.body;
 
-    // check if product already exists
     const product = await ProductsRepository.getProductById(id);
-    if (product) {
-      return res.status(400).json({
-        message: "Product already exists",
+    if (!product) {
+      return res.status(404).json({
+        message: "Product not found",
       });
     }
 
-    // insert product
-    await ProductsRepository.insertProduct({
-      id,
+    // update product
+    await ProductsRepository.updateProduct(id, {
       name,
       description,
       price,
@@ -27,7 +25,7 @@ module.exports = async (req, res, next) => {
     // return products list
     const products = await ProductsRepository.getProducts();
 
-    return res.status(201).json({
+    return res.json({
       products,
     });
   } catch (error) {
