@@ -6,10 +6,6 @@ const ProductTypeSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
 });
 
 module.exports = mongoose.model("ProductType", ProductTypeSchema);

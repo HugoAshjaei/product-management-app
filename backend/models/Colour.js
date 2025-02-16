@@ -9,7 +9,6 @@ const ColourSchema = new mongoose.Schema({
   hex: {
     type: String,
     required: true,
-    unique: true,
   },
 });
 
