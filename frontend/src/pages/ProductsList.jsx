@@ -5,27 +5,34 @@ import _ from "lodash";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const fetchProducts = async (pageNumber) => {
+    try {
+      const response = await api.get(
+        `/products/list?page=${pageNumber || 1}&limit=10`
+      );
+      setProducts((prevProducts) =>
+        _.uniqBy([...prevProducts, ...response.data.products], "id")
+      );
+      setTotalProducts(response.data.pagination.total);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadMoreProducts = () => {
+    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+  };
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await api.get("/products/list");
-        setProducts((prevProducts) =>
-          _.uniqBy([...prevProducts, ...response.data.products], "id")
-        );
-        setPagination(response.data.pagination);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+    fetchProducts(pageNumber);
+  }, [pageNumber]);
 
   return (
     <div>
@@ -35,6 +42,11 @@ const Home = () => {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+      {!loading && products.length < totalProducts && (
+        <button onClick={loadMoreProducts} className="load-more">
+          Load more
+        </button>
+      )}
     </div>
   );
 };
