@@ -20,10 +20,7 @@ const ProductSchema = new mongoose.Schema(
     images: [
       {
         _id: false,
-        url: {
-          type: String,
-          required: true,
-        },
+        type: String,
       },
     ],
     price: {
