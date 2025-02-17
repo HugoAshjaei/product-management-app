@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "../styles.css"; // Ensure this contains our styles
+import "../styles.css";
 
 const ProductCard = ({ product }) => {
   const price = product.price.toString();

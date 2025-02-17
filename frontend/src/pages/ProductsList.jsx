@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../componenets/ProductCard";
+import Filter from "../componenets/Filter";
 import api from "../api/axiosInstance";
 import _ from "lodash";
 
@@ -62,6 +63,14 @@ const Home = () => {
   return (
     <div>
       <h1>Products list</h1>
+      <Filter
+        colours={colours}
+        selectedColour={selectedColour}
+        setSelectedColour={setSelectedColour}
+        productTypes={productTypes}
+        selectedProductType={selectedProductType}
+        setSelectedProductType={setSelectedProductType}
+      />
       <div className="products-list">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
