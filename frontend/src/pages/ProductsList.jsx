@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
-import ProductCard from "../componenets/ProductCard";
-import Filter from "../componenets/Filter";
+import Filter from "../components/Filter";
+import ProductsList from "../components/ProductsList";
+import LoadMore from "../components/LoadMore";
 import api from "../api/axiosInstance";
 import _ from "lodash";
 import "../styles/components/load-more.css";
@@ -82,26 +83,13 @@ const Home = () => {
         selectedProductType={selectedProductType}
         setSelectedProductType={setSelectedProductType}
       />
-      <div className="products-list">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-      {!loading && products.length < totalProducts && (
-        <button onClick={loadMoreProducts} className="load-more">
-          Load more
-        </button>
-      )}
-      {loading && (
-        <button disabled className="load-more load-more-disabled">
-          Loading...
-        </button>
-      )}
-      {!loading && products.length === totalProducts && (
-        <button className="load-more load-more-disabled">
-          No more products to load
-        </button>
-      )}
+      <ProductsList products={products} />
+      <LoadMore
+        loading={loading}
+        productsLength={products.length}
+        totalProducts={totalProducts}
+        loadMoreProducts={loadMoreProducts}
+      />
     </div>
   );
 };
