@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../styles/components/product-card.css";
+import "../styles/components/buttons.css";
 
 const ProductCard = ({ product }) => {
   const price = product.price.toString();
@@ -21,7 +22,7 @@ const ProductCard = ({ product }) => {
         <span className="product-price-decimal">{`${priceDecimalFormatted}`}</span>
       </div>
 
-      <Link to={`/edit/${product.id}`} className="edit-link">
+      <Link to={`/edit/${product.id}`} className="btn">
         Edit
       </Link>
     </div>
