@@ -6,14 +6,12 @@ const ProductCard = ({ product }) => {
   const price = product.price.toString();
   const priceInteger = price.split(".")[0];
   const priceDecimal = price.split(".")[1];
-  const priceDecimalFormatted = priceDecimal ? priceDecimal : ":-";
+  const priceDecimalFormatted = priceDecimal ? `:${priceDecimal}` : ":-";
+  const image = product.images[0] || "/images/default.webp";
+
   return (
     <div className="product-card">
-      <img
-        src={product.images[0]}
-        alt={product.name}
-        className="product-image"
-      />
+      <img src={image} alt={product.name} className="product-image" />
 
       <h3 className="product-name">{product.name}</h3>
       <p className="product-description">{product.description}</p>
