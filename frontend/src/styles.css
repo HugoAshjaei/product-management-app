@@ -101,7 +101,14 @@
     position: relative;
     display: inline-block;
   }
+
+  .dropdown-container {
+    display: flex;
+  }
   
+  .dropdown-gap {
+    margin-left: 0.5rem;
+  }
   .dropdown-button {
     display: block;
     margin: 0.6rem auto;
@@ -160,4 +167,5 @@
     height: 10px;
     float: right;
     border-radius: 30%;
+    border: 1px solid #fff;
   }

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Dropdown from "./Dropdown";
 import "../styles.css";
@@ -12,22 +11,34 @@ const Filter = ({
   setSelectedProductType,
 }) => {
   return (
-    <div className="">
-      <div className="dropdown-container">
+    <div className="dropdown-container">
+      <div>
         <Dropdown
           title="Select colour"
           items={colours}
           selectedItem={selectedColour}
           setSelectedItem={setSelectedColour}
         />
-        {/* <Dropdown
+      </div>
+      <div className="dropdown-gap">
+        <Dropdown
+          title="Select product type"
           items={productTypes}
           selectedItem={selectedProductType}
           setSelectedItem={setSelectedProductType}
-        /> */}
+        />
       </div>
     </div>
   );
+};
+
+Filter.propTypes = {
+  colours: PropTypes.array.isRequired,
+  selectedColour: PropTypes.string.isRequired,
+  setSelectedColour: PropTypes.func.isRequired,
+  productTypes: PropTypes.array.isRequired,
+  selectedProductType: PropTypes.string.isRequired,
+  setSelectedProductType: PropTypes.func.isRequired,
 };
 
 export default Filter;
