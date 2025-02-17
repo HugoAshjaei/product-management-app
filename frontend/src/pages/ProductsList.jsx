@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import Filter from "../components/Filter";
 import ProductsList from "../components/ProductsList";
 import LoadMore from "../components/LoadMore";
 import api from "../api/axiosInstance";
 import _ from "lodash";
-import "../styles/components/load-more.css";
+import "../styles/components/buttons.css";
+import "../styles/layouts/products-list.css";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -75,14 +77,19 @@ const Home = () => {
   return (
     <div>
       <h1>Products list</h1>
-      <Filter
-        colours={colours}
-        selectedColour={selectedColour}
-        setSelectedColour={setSelectedColour}
-        productTypes={productTypes}
-        selectedProductType={selectedProductType}
-        setSelectedProductType={setSelectedProductType}
-      />
+      <div className="filter-add-product-container">
+        <Filter
+          colours={colours}
+          selectedColour={selectedColour}
+          setSelectedColour={setSelectedColour}
+          productTypes={productTypes}
+          selectedProductType={selectedProductType}
+          setSelectedProductType={setSelectedProductType}
+        />
+        <Link to={`/add`} className="btn">
+          Add product
+        </Link>
+      </div>
       <ProductsList products={products} />
       <LoadMore
         loading={loading}

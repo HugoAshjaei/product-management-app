@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-
+import "../styles/components/load-more.css";
 const LoadMore = ({
   loading,
   productsLength,
