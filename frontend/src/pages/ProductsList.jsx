@@ -3,6 +3,7 @@ import ProductCard from "../componenets/ProductCard";
 import Filter from "../componenets/Filter";
 import api from "../api/axiosInstance";
 import _ from "lodash";
+import "../styles/components/load-more.css";
 
 const Home = () => {
   const [products, setProducts] = useState([]);

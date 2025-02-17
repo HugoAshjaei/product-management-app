@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import "../styles.css";
+import "../styles/components/dropdown.css";
 
 const Dropdown = ({ title, items, selectedItem, setSelectedItem }) => {
   const selectedItemName = _.find(items, { _id: selectedItem })?.name;

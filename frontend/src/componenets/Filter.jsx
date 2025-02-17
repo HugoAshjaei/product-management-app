@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import Dropdown from "./Dropdown";
-import "../styles.css";
 
 const Filter = ({
   colours,
