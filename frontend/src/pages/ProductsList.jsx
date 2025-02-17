@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ProductCard from "../componenets/ProductCard";
 import Filter from "../componenets/Filter";
 import api from "../api/axiosInstance";
@@ -11,33 +11,35 @@ const Home = () => {
   const [productTypes, setProductTypes] = useState([]);
   const [selectedProductType, setSelectedProductType] = useState("");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [totalProducts, setTotalProducts] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
 
-  const fetchProducts = async (pageNumber) => {
-    try {
-      const endpoint = `/products/list?page=${pageNumber || 1}&limit=10${
-        selectedColour ? `&colour=${selectedColour}` : ""
-      }${selectedProductType ? `&productType=${selectedProductType}` : ""}`;
-      const response = await api.get(endpoint);
-      setProducts((prevProducts) =>
-        _.uniqBy([...prevProducts, ...response.data.products], "id")
-      );
-      setTotalProducts(response.data.pagination.total);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const fetchProducts = useCallback(
+    async (pageNumber) => {
+      try {
+        const endpoint = `/products/list?page=${pageNumber || 1}&limit=10${
+          selectedColour ? `&colourId=${selectedColour}` : ""
+        }${selectedProductType ? `&productTypeId=${selectedProductType}` : ""}`;
+        const response = await api.get(endpoint);
+        setProducts((prevProducts) =>
+          _.uniqBy([...prevProducts, ...response.data.products], "id")
+        );
+        setTotalProducts(response.data.pagination.total);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [selectedColour, selectedProductType]
+  );
 
   const fetchColours = async () => {
     try {
       const response = await api.get("/colours/list");
       setColours(response.data.colours);
     } catch (error) {
-      setError(error);
+      console.error(error);
     }
   };
 
@@ -46,7 +48,7 @@ const Home = () => {
       const response = await api.get("/productTypes/list");
       setProductTypes(response.data.productTypes);
     } catch (error) {
-      setError(error);
+      console.error(error);
     }
   };
 
@@ -55,10 +57,18 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchProducts(pageNumber);
     fetchColours();
     fetchProductTypes();
-  }, [pageNumber]);
+  }, []);
+
+  useEffect(() => {
+    fetchProducts(pageNumber);
+  }, [pageNumber, selectedColour, selectedProductType, fetchProducts]);
+
+  useEffect(() => {
+    setProducts([]);
+    setPageNumber(1);
+  }, [selectedColour, selectedProductType]);
 
   return (
     <div>
