@@ -8,6 +8,7 @@ This is the frontend part of the Product Management App, built using React and V
 - [Scripts](#scripts)
 - [Pages](#pages)
 - [API](#api)
+- [Docker Setup](#docker-setup)
 - [Project Structure](#project-structure)
 
 ## Installation
@@ -68,6 +69,22 @@ The following scripts are available in the [package.json](http://_vscodecontentr
 
 The API is configured using Axios in the `axiosInstance.js` file. The base URL for the API is `http://localhost:4000/api/`.
 
+## Docker Setup
+
+To run the application using Docker, follow these steps:
+
+1. Ensure you have Docker and Docker Compose installed on your machine.
+
+2. Navigate to the root directory of the project where the docker-compose.yml file is located.
+
+3. Build and start the containers:
+
+   ```sh
+   docker-compose up --build
+   ```
+
+4. The backend server will be available at `http://localhost:4000` and the frontend at `http://localhost:3000`.
+
 ## Project Structure
 
 The project structure is as follows:
@@ -78,8 +95,11 @@ frontend/
 ├── eslint.config.js
 ├── index.html
 ├── package.json
+├── Dockerfile
 ├── public/
 ├── README.md
+├── nginx/
+│   └── default.conf
 ├── src/
 │   ├── api/
 │   │   └── axiosInstance.js

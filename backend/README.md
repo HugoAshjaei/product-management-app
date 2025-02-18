@@ -7,6 +7,7 @@ This is the backend part of the Product Management App, built using Node.js and 
 - [Installation](#installation)
 - [Scripts](#scripts)
 - [API Endpoints](#api-endpoints)
+- [Docker Setup](#docker-setup)
 - [Project Structure](#project-structure)
 
 ## Installation
@@ -87,6 +88,22 @@ The following endpoints are available:
 `PUT /api/products/update/:id`: Update a product by ID.
 
 `DELETE /api/products/delete/:id`: Delete a product by ID.
+
+## Docker Setup
+
+To run the application using Docker, follow these steps:
+
+1. Ensure you have Docker and Docker Compose installed on your machine.
+
+2. Navigate to the root directory of the project where the docker-compose.yml file is located.
+
+3. Build and start the containers:
+
+   ```sh
+   docker-compose up --build
+   ```
+
+4. The backend server will be available at `http://localhost:4000` and the frontend at `http://localhost:3000`.
 
 ## Project Structure
 
@@ -177,5 +194,6 @@ backend/
 ├── eslint.config.mjs
 ├── index.js
 ├── package.json
+|── Dockerfile
 └── README.md
 ```
