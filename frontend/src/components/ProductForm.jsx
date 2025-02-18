@@ -42,6 +42,7 @@ const ProductForm = ({
   coloursList,
   productTypesList,
   handleSubmit,
+  handleDelete,
   isEdit,
 }) => {
   const isValid = useFormValidation(id, name, price, colours, productType);
@@ -71,6 +72,21 @@ const ProductForm = ({
         <button type="submit" className="btn-primary" disabled={!isValid}>
           {isEdit ? "Update Product" : "Add Product"}
         </button>
+        {isEdit && (
+          <button
+            type="button"
+            className="btn-danger btn-margin"
+            onClick={() => {
+              if (
+                window.confirm("Are you sure you want to delete this product?")
+              ) {
+                handleDelete();
+              }
+            }}
+          >
+            Delete Product
+          </button>
+        )}
       </form>
     </div>
   );
@@ -94,6 +110,7 @@ ProductForm.propTypes = {
   coloursList: PropTypes.array.isRequired,
   productTypesList: PropTypes.array.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func,
   isEdit: PropTypes.bool.isRequired,
 };
 

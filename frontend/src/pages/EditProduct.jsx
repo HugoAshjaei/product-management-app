@@ -75,6 +75,15 @@ const EditProduct = () => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await api.delete(`/products/delete/${productId}`);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <h1>Edit Product</h1>
@@ -96,6 +105,7 @@ const EditProduct = () => {
         coloursList={coloursList}
         productTypesList={productTypesList}
         handleSubmit={handleSubmit}
+        handleDelete={handleDelete}
         isEdit={true}
       />
     </div>
