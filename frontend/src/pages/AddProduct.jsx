@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Select from "react-select";
+import ProductForm from "../components/ProductForm";
 import api from "../api/axiosInstance";
 import "../styles/components/buttons.css";
 
@@ -61,94 +61,25 @@ const AddProduct = () => {
   return (
     <div>
       <h1>Add Product</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="id">ID:</label>
-        <br />
-        <input
-          type="text"
-          id="id"
-          name="id"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-          required
-        />
-        <br />
-
-        <label htmlFor="name">Name:</label>
-        <br />
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <br />
-
-        <label htmlFor="price">Price:</label>
-        <br />
-        <input
-          type="text"
-          id="price"
-          name="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-        <br />
-
-        <label htmlFor="description">Description:</label>
-        <br />
-        <input
-          type="text"
-          id="description"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <br />
-
-        <label htmlFor="colour">Colours:</label>
-        <br />
-        <Select
-          isMulti
-          options={coloursList.map((colour) => ({
-            value: colour._id,
-            label: colour.name,
-          }))}
-          onChange={(selectedColours) =>
-            setColours(selectedColours.map((colour) => colour.value))
-          }
-        />
-        <br />
-
-        <label htmlFor="productType">Product Type:</label>
-        <br />
-        <Select
-          options={productTypesList.map((productType) => ({
-            value: productType._id,
-            label: productType.name,
-          }))}
-          onChange={(selectedProductType) =>
-            setProductType(selectedProductType.value)
-          }
-        />
-        <br />
-
-        <label htmlFor="images">Image url:</label>
-        <br />
-        <input
-          type="text"
-          id="images"
-          name="images"
-          value={images[0]}
-          onChange={(e) => setImages([e.target.value])}
-        />
-        <br />
-
-        <button type="submit">Add Product</button>
-      </form>
+      <ProductForm
+        id={id}
+        setId={setId}
+        name={name}
+        setName={setName}
+        price={price}
+        setPrice={setPrice}
+        description={description}
+        setDescription={setDescription}
+        colours={colours}
+        setColours={setColours}
+        productType={productType}
+        setProductType={setProductType}
+        images={images}
+        setImages={setImages}
+        coloursList={coloursList}
+        productTypesList={productTypesList}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };

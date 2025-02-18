@@ -1,4 +1,6 @@
-  .btn {
+  .btn-primary {
+    border: 0;
+    box-shadow: none;
     font-family: Arial, sans-serif;
     display: inline-block;
     padding: 0.6rem;
@@ -9,6 +11,12 @@
     border-radius: 0.3rem;
   }
 
-  .btn:hover {
+  .btn-primary:hover {
     background-color: #00457C;
+  }
+
+  .btn-primary[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
   }

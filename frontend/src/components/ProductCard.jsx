@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
         <span className="product-price-decimal">{`${priceDecimalFormatted}`}</span>
       </div>
 
-      <Link to={`/edit/${product.id}`} className="btn">
+      <Link to={`/edit/${product.id}`} className="btn-primary">
         Edit
       </Link>
     </div>

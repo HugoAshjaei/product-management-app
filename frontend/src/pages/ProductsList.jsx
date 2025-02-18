@@ -86,7 +86,7 @@ const Home = () => {
           selectedProductType={selectedProductType}
           setSelectedProductType={setSelectedProductType}
         />
-        <Link to={`/add`} className="btn">
+        <Link to={`/add`} className="btn-primary">
           Add product
         </Link>
       </div>
