@@ -67,7 +67,7 @@ const EditProduct = () => {
         description,
         colours,
         productType,
-        images,
+        images: images.filter((image) => image !== ""),
       });
       navigate("/");
     } catch (error) {
