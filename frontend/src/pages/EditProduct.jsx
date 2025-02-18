@@ -61,8 +61,7 @@ const EditProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.put(`/products/edit/${productId}`, {
-        id,
+      await api.put(`/products/update/${productId}`, {
         name,
         price,
         description,
@@ -97,6 +96,7 @@ const EditProduct = () => {
         coloursList={coloursList}
         productTypesList={productTypesList}
         handleSubmit={handleSubmit}
+        isEdit={true}
       />
     </div>
   );

@@ -22,6 +22,7 @@ const ProductForm = ({
   coloursList,
   productTypesList,
   handleSubmit,
+  isEdit,
 }) => {
   const [isValid, setIsValid] = useState(false);
 
@@ -67,8 +68,9 @@ const ProductForm = ({
           id="id"
           name="id"
           value={id}
-          onChange={(e) => setId(e.target.value)}
+          onChange={(e) => isEdit || setId(e.target.value)}
           required
+          readOnly={isEdit}
         />
         <br />
 
@@ -152,7 +154,7 @@ const ProductForm = ({
         <br />
 
         <button type="submit" className="btn-primary" disabled={!isValid}>
-          Add Product
+          {isEdit ? "Update Product" : "Add Product"}
         </button>
       </form>
     </div>
@@ -177,6 +179,7 @@ ProductForm.propTypes = {
   coloursList: PropTypes.array.isRequired,
   productTypesList: PropTypes.array.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired,
 };
 
 export default ProductForm;

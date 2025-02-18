@@ -79,6 +79,7 @@ const AddProduct = () => {
         coloursList={coloursList}
         productTypesList={productTypesList}
         handleSubmit={handleSubmit}
+        isEdit={false}
       />
     </div>
   );
