@@ -33,6 +33,12 @@ To get started with the project, follow these steps:
    npm install
    ```
 
+3. Create a `.env` file in the `backend` by copying the `.env.example` file:
+
+   ```sh
+   cp backend/.env.example backend/.env
+   ```
+
 ## Scripts
 
 Find more information about the available scripts in the [frontend](frontend/README.md#scripts) and [backend](backend/README.md#scripts) README files.
