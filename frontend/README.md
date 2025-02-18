@@ -6,9 +6,9 @@ This is the frontend part of the Product Management App, built using React and V
 
 - [Installation](#installation)
 - [Scripts](#scripts)
-- [Project Structure](#project-structure)
 - [Pages](#pages)
 - [API](#api)
+- [Project Structure](#project-structure)
 
 ## Installation
 
@@ -58,6 +58,16 @@ The following scripts are available in the [package.json](http://_vscodecontentr
   npm run preview
   ```
 
+## Pages
+
+- **ProductsList**: A page for displaying the list of products with filtering options.
+- **AddProduct**: A page for adding a new product.
+- **EditProduct**: A page for editing an existing product.
+
+## API
+
+The API is configured using Axios in the `axiosInstance.js` file. The base URL for the API is `http://localhost:4000/api/`.
+
 ## Project Structure
 
 The project structure is as follows:
@@ -100,13 +110,3 @@ frontend/
 │           └── products-list.css
 └── vite.config.js
 ```
-
-## Pages
-
-- **ProductsList**: A page for displaying the list of products with filtering options.
-- **AddProduct**: A page for adding a new product.
-- **EditProduct**: A page for editing an existing product.
-
-## API
-
-The API is configured using Axios in the `axiosInstance.js` file. The base URL for the API is `http://localhost:4000/api/`.
