@@ -55,8 +55,15 @@ The following scripts are available in the [package.json](http://_vscodecontentr
   ```
 
 - `preview`: Previews the production build.
+
   ```sh
   npm run preview
+  ```
+
+- `test`: Runs the tests.
+
+  ```sh
+  npm run test
   ```
 
 ## Pages
@@ -100,6 +107,11 @@ frontend/
 ├── README.md
 ├── nginx/
 │   └── default.conf
+├── tests/
+│   └── components/
+│       ├── Dropdown.test.js
+│       ├── FormInput.test.js
+│       ├── LoadMore.test.js
 ├── src/
 │   ├── api/
 │   │   └── axiosInstance.js
