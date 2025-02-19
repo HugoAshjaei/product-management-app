@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import React from "react";
 import PropTypes from "prop-types";
 import "../styles/components/load-more.css";
 const LoadMore = ({
@@ -23,7 +25,7 @@ const LoadMore = ({
   }
 
   return (
-    <button className="load-more load-more-disabled">
+    <button className="load-more load-more-disabled" disabled>
       No more products to load
     </button>
   );
