@@ -33,10 +33,11 @@ To get started with the project, follow these steps:
    npm install
    ```
 
-3. Create a `.env` file in the `backend` by copying the `.env.example` file:
+3. Create a `.env` file in the `backend` and `frontend` by copying the `.env.example` file:
 
    ```sh
    cp backend/.env.example backend/.env
+   cp frontend/.env.example frontend/.env
    ```
 
 ## Scripts
