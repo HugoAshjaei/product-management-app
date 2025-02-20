@@ -44,6 +44,7 @@ const ProductSchema = new mongoose.Schema(
   }
 );
 
+ProductSchema.index({ id: 1 });
 ProductSchema.index({ name: 1 });
 ProductSchema.index({ colour: 1 });
 ProductSchema.index({ productType: 1 });
